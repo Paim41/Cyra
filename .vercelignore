@@ -1,0 +1,13 @@
+reference/
+docs/
+scripts/
+tests/
+CODEX_MASTER_PROMPT.md
+README_FIRST.md
+AGENTS.md
+playwright-report/
+test-results/
+.env*
+*.exe
+*.zip
+*.pdb

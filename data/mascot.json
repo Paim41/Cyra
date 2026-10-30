@@ -1,0 +1,588 @@
+{
+  "title": "Cyra Neon Crimson Dragon",
+  "style": "faithful extracted neon outline from user screenshot",
+  "frame_size": [
+    128,
+    128
+  ],
+  "display_size_recommended_px": [
+    52,
+    74
+  ],
+  "background": "transparent RGBA",
+  "sprites": {
+    "idle": {
+      "file": "cyra_idle_12frames.png",
+      "frames": 12,
+      "fps": 12,
+      "loop": true,
+      "frame_rects": [
+        [
+          0,
+          0,
+          128,
+          128
+        ],
+        [
+          128,
+          0,
+          128,
+          128
+        ],
+        [
+          256,
+          0,
+          128,
+          128
+        ],
+        [
+          384,
+          0,
+          128,
+          128
+        ],
+        [
+          512,
+          0,
+          128,
+          128
+        ],
+        [
+          640,
+          0,
+          128,
+          128
+        ],
+        [
+          768,
+          0,
+          128,
+          128
+        ],
+        [
+          896,
+          0,
+          128,
+          128
+        ],
+        [
+          1024,
+          0,
+          128,
+          128
+        ],
+        [
+          1152,
+          0,
+          128,
+          128
+        ],
+        [
+          1280,
+          0,
+          128,
+          128
+        ],
+        [
+          1408,
+          0,
+          128,
+          128
+        ]
+      ]
+    },
+    "blink": {
+      "file": "cyra_blink_8frames.png",
+      "frames": 8,
+      "fps": 12,
+      "loop": true,
+      "frame_rects": [
+        [
+          0,
+          0,
+          128,
+          128
+        ],
+        [
+          128,
+          0,
+          128,
+          128
+        ],
+        [
+          256,
+          0,
+          128,
+          128
+        ],
+        [
+          384,
+          0,
+          128,
+          128
+        ],
+        [
+          512,
+          0,
+          128,
+          128
+        ],
+        [
+          640,
+          0,
+          128,
+          128
+        ],
+        [
+          768,
+          0,
+          128,
+          128
+        ],
+        [
+          896,
+          0,
+          128,
+          128
+        ]
+      ]
+    },
+    "hover": {
+      "file": "cyra_hover_12frames.png",
+      "frames": 12,
+      "fps": 15,
+      "loop": true,
+      "frame_rects": [
+        [
+          0,
+          0,
+          128,
+          128
+        ],
+        [
+          128,
+          0,
+          128,
+          128
+        ],
+        [
+          256,
+          0,
+          128,
+          128
+        ],
+        [
+          384,
+          0,
+          128,
+          128
+        ],
+        [
+          512,
+          0,
+          128,
+          128
+        ],
+        [
+          640,
+          0,
+          128,
+          128
+        ],
+        [
+          768,
+          0,
+          128,
+          128
+        ],
+        [
+          896,
+          0,
+          128,
+          128
+        ],
+        [
+          1024,
+          0,
+          128,
+          128
+        ],
+        [
+          1152,
+          0,
+          128,
+          128
+        ],
+        [
+          1280,
+          0,
+          128,
+          128
+        ],
+        [
+          1408,
+          0,
+          128,
+          128
+        ]
+      ]
+    },
+    "happy": {
+      "file": "cyra_happy_12frames.png",
+      "frames": 12,
+      "fps": 15,
+      "loop": false,
+      "frame_rects": [
+        [
+          0,
+          0,
+          128,
+          128
+        ],
+        [
+          128,
+          0,
+          128,
+          128
+        ],
+        [
+          256,
+          0,
+          128,
+          128
+        ],
+        [
+          384,
+          0,
+          128,
+          128
+        ],
+        [
+          512,
+          0,
+          128,
+          128
+        ],
+        [
+          640,
+          0,
+          128,
+          128
+        ],
+        [
+          768,
+          0,
+          128,
+          128
+        ],
+        [
+          896,
+          0,
+          128,
+          128
+        ],
+        [
+          1024,
+          0,
+          128,
+          128
+        ],
+        [
+          1152,
+          0,
+          128,
+          128
+        ],
+        [
+          1280,
+          0,
+          128,
+          128
+        ],
+        [
+          1408,
+          0,
+          128,
+          128
+        ]
+      ]
+    },
+    "sleep": {
+      "file": "cyra_sleep_12frames.png",
+      "frames": 12,
+      "fps": 8,
+      "loop": true,
+      "frame_rects": [
+        [
+          0,
+          0,
+          128,
+          128
+        ],
+        [
+          128,
+          0,
+          128,
+          128
+        ],
+        [
+          256,
+          0,
+          128,
+          128
+        ],
+        [
+          384,
+          0,
+          128,
+          128
+        ],
+        [
+          512,
+          0,
+          128,
+          128
+        ],
+        [
+          640,
+          0,
+          128,
+          128
+        ],
+        [
+          768,
+          0,
+          128,
+          128
+        ],
+        [
+          896,
+          0,
+          128,
+          128
+        ],
+        [
+          1024,
+          0,
+          128,
+          128
+        ],
+        [
+          1152,
+          0,
+          128,
+          128
+        ],
+        [
+          1280,
+          0,
+          128,
+          128
+        ],
+        [
+          1408,
+          0,
+          128,
+          128
+        ]
+      ]
+    },
+    "working": {
+      "file": "cyra_working_12frames.png",
+      "frames": 12,
+      "fps": 12,
+      "loop": true,
+      "frame_rects": [
+        [
+          0,
+          0,
+          128,
+          128
+        ],
+        [
+          128,
+          0,
+          128,
+          128
+        ],
+        [
+          256,
+          0,
+          128,
+          128
+        ],
+        [
+          384,
+          0,
+          128,
+          128
+        ],
+        [
+          512,
+          0,
+          128,
+          128
+        ],
+        [
+          640,
+          0,
+          128,
+          128
+        ],
+        [
+          768,
+          0,
+          128,
+          128
+        ],
+        [
+          896,
+          0,
+          128,
+          128
+        ],
+        [
+          1024,
+          0,
+          128,
+          128
+        ],
+        [
+          1152,
+          0,
+          128,
+          128
+        ],
+        [
+          1280,
+          0,
+          128,
+          128
+        ],
+        [
+          1408,
+          0,
+          128,
+          128
+        ]
+      ]
+    },
+    "notification": {
+      "file": "cyra_notification_12frames.png",
+      "frames": 12,
+      "fps": 15,
+      "loop": false,
+      "frame_rects": [
+        [
+          0,
+          0,
+          128,
+          128
+        ],
+        [
+          128,
+          0,
+          128,
+          128
+        ],
+        [
+          256,
+          0,
+          128,
+          128
+        ],
+        [
+          384,
+          0,
+          128,
+          128
+        ],
+        [
+          512,
+          0,
+          128,
+          128
+        ],
+        [
+          640,
+          0,
+          128,
+          128
+        ],
+        [
+          768,
+          0,
+          128,
+          128
+        ],
+        [
+          896,
+          0,
+          128,
+          128
+        ],
+        [
+          1024,
+          0,
+          128,
+          128
+        ],
+        [
+          1152,
+          0,
+          128,
+          128
+        ],
+        [
+          1280,
+          0,
+          128,
+          128
+        ],
+        [
+          1408,
+          0,
+          128,
+          128
+        ]
+      ]
+    }
+  },
+  "cursor_look": {
+    "file": "cyra_eyes_9directions.png",
+    "grid": [
+      3,
+      3
+    ],
+    "positions": [
+      "up_left",
+      "up",
+      "up_right",
+      "left",
+      "center",
+      "right",
+      "down_left",
+      "down",
+      "down_right"
+    ],
+    "method": "Best: dynamically interpolate pupil offset ±2px based on Windows cursor relative to mascot. 3x3 grid is fallback only."
+  },
+  "layers": {
+    "body": "cyra_body_base_no_eye.png",
+    "eye": "cyra_eye_overlay.png",
+    "eye_center_px": [
+      60.9,
+      64.1
+    ]
+  },
+  "themes": {
+    "dark": "dark/*.png — crimson/black",
+    "light": "light/*.png — blue/white"
+  },
+  "notes": [
+    "Both themes use identical frame dimensions, counts and alpha geometry.",
+    "Source atlas in references/cyra is artwork reference with labels, NOT a direct normalized runtime sprite sheet.",
+    "Runtime candidates are based on an earlier isolated outline extraction; verify visual fidelity and animation loop continuity against selected reference.",
+    "Render at fit-to-notch size; do not show labels or background."
+  ]
+}

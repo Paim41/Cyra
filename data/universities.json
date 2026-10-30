@@ -1,0 +1,418 @@
+{
+  "title": "Cyra University Hub — Malaysia official portal starter catalog",
+  "researched_on": "2026-10-27",
+  "scope_note": "Includes all 20 Malaysian public universities and a curated set of 9 private/international universities. Not an exhaustive private-university census. Some destinations are official LMS entry points, while a few are official guidance/student-directory pages; see kind. Portals can change with semester/campus.",
+  "universities": [
+    {
+      "id": "um",
+      "abbreviation": "UM",
+      "name": "Universiti Malaya",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "SPeCTRUM",
+        "url": "https://spectrum.um.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.um.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "usm",
+      "abbreviation": "USM",
+      "name": "Universiti Sains Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "eLearn@USM",
+        "url": "https://elearning.usm.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.usm.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "ukm",
+      "abbreviation": "UKM",
+      "name": "Universiti Kebangsaan Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "UKMFolio",
+        "url": "https://ukmfolio.ukm.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.ukm.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "upm",
+      "abbreviation": "UPM",
+      "name": "Universiti Putra Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "PutraBLAST",
+        "url": "https://putrablastdk.upm.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.upm.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "utm",
+      "abbreviation": "UTM",
+      "name": "Universiti Teknologi Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "eLearning@UTM",
+        "url": "https://elearning.utm.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.utm.my/",
+      "requires_university_login": true,
+      "other_shortcuts": [
+        {
+          "label": "MyUTM student portal",
+          "url": "https://my.utm.my/"
+        }
+      ]
+    },
+    {
+      "id": "uitm",
+      "abbreviation": "UiTM",
+      "name": "Universiti Teknologi MARA",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "UFUTURE",
+        "url": "https://ufuture.uitm.edu.my/home/",
+        "kind": "lms"
+      },
+      "official_website": "https://uitm.edu.my/",
+      "requires_university_login": true,
+      "other_shortcuts": [
+        {
+          "label": "iStudent",
+          "url": "https://istudent.uitm.edu.my/"
+        }
+      ]
+    },
+    {
+      "id": "iium",
+      "abbreviation": "IIUM",
+      "name": "Universiti Islam Antarabangsa Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "i-Taleem",
+        "url": "https://italeemc.iium.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.iium.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "ums",
+      "abbreviation": "UMS",
+      "name": "Universiti Malaysia Sabah",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "SMARTUMS v3 (official guidance)",
+        "url": "https://telcop.ums.edu.my/digital-tools/smartums-v3",
+        "kind": "guidance_not_direct_login"
+      },
+      "official_website": "https://www.ums.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "unimas",
+      "abbreviation": "UNIMAS",
+      "name": "Universiti Malaysia Sarawak",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "eLEAP",
+        "url": "https://eleap.unimas.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.unimas.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "uum",
+      "abbreviation": "UUM",
+      "name": "Universiti Utara Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "UUM Student Portal",
+        "url": "https://portal4.uum.edu.my/",
+        "kind": "student_portal"
+      },
+      "official_website": "https://www.uum.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "upsi",
+      "abbreviation": "UPSI",
+      "name": "Universiti Pendidikan Sultan Idris",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "MyGURU",
+        "url": "https://myguru.upsi.edu.my/users/auth/login",
+        "kind": "lms"
+      },
+      "official_website": "https://www.upsi.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "uthm",
+      "abbreviation": "UTHM",
+      "name": "Universiti Tun Hussein Onn Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "AUTHOR LMS",
+        "url": "https://author.uthm.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.uthm.edu.my/",
+      "requires_university_login": true,
+      "other_shortcuts": [
+        {
+          "label": "SMAP (academic/attendance)",
+          "url": "https://smap.uthm.edu.my/"
+        },
+        {
+          "label": "UTHMid SSO",
+          "url": "https://uthmid.uthm.edu.my/"
+        }
+      ]
+    },
+    {
+      "id": "utem",
+      "abbreviation": "UTeM",
+      "name": "Universiti Teknikal Malaysia Melaka",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "ULearn",
+        "url": "https://ulearn.utem.edu.my/hub/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.utem.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "unimap",
+      "abbreviation": "UniMAP",
+      "name": "Universiti Malaysia Perlis",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "URLearn",
+        "url": "https://urlearn.unimap.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.unimap.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "umt",
+      "abbreviation": "UMT",
+      "name": "Universiti Malaysia Terengganu",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "eLearning portal (select study level)",
+        "url": "https://epembelajaran.umt.edu.my/elearning/index.php",
+        "kind": "lms_directory"
+      },
+      "official_website": "https://www.umt.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "umpsa",
+      "abbreviation": "UMPSA",
+      "name": "Universiti Malaysia Pahang Al-Sultan Abdullah",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "KALAM",
+        "url": "https://kalam.umpsa.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.umpsa.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "usim",
+      "abbreviation": "USIM",
+      "name": "Universiti Sains Islam Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "GOALS",
+        "url": "https://goals.usim.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.usim.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "unisza",
+      "abbreviation": "UniSZA",
+      "name": "Universiti Sultan Zainal Abidin",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "KeLIP",
+        "url": "https://kelip.unisza.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.unisza.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "umk",
+      "abbreviation": "UMK",
+      "name": "Universiti Malaysia Kelantan",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "eCampus UMK",
+        "url": "https://ecampus.umk.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.umk.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "upnm",
+      "abbreviation": "UPNM",
+      "name": "Universiti Pertahanan Nasional Malaysia",
+      "institution_type": "public",
+      "learning_access": {
+        "label": "AlFateh eLearning",
+        "url": "https://elearning.upnm.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.upnm.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "apu",
+      "abbreviation": "APU",
+      "name": "Asia Pacific University",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "APSpace",
+        "url": "https://apspace.apu.edu.my/",
+        "kind": "student_portal"
+      },
+      "official_website": "https://www.apu.edu.my/",
+      "requires_university_login": true,
+      "other_shortcuts": [
+        {
+          "label": "Moodle",
+          "url": "https://lms2.apiit.edu.my/"
+        }
+      ]
+    },
+    {
+      "id": "mmu",
+      "abbreviation": "MMU",
+      "name": "Multimedia University",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "MMLS",
+        "url": "https://mmls.mmu.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://www.mmu.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "taylors",
+      "abbreviation": "Taylor's",
+      "name": "Taylor’s University",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "myTIMeS",
+        "url": "https://mytimes.taylors.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://university.taylors.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "utar",
+      "abbreviation": "UTAR",
+      "name": "Universiti Tunku Abdul Rahman",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "WBLE eLearning Directory",
+        "url": "https://e-learning.utar.edu.my/",
+        "kind": "lms_directory"
+      },
+      "official_website": "https://www.utar.edu.my/",
+      "requires_university_login": true,
+      "other_shortcuts": [
+        {
+          "label": "WBLE",
+          "url": "https://e-learning.utar.edu.my/WBLE.php"
+        }
+      ]
+    },
+    {
+      "id": "help",
+      "abbreviation": "HELP",
+      "name": "HELP University",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "HELP eLearning (HLMS)",
+        "url": "https://hlms.help.edu.my/",
+        "kind": "lms"
+      },
+      "official_website": "https://university.help.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "monash-malaysia",
+      "abbreviation": "Monash Malaysia",
+      "name": "Monash University Malaysia",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "my.monash Student Portal",
+        "url": "https://my.monash.edu/",
+        "kind": "student_portal"
+      },
+      "official_website": "https://www.monash.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "nottingham-malaysia",
+      "abbreviation": "Nottingham Malaysia",
+      "name": "University of Nottingham Malaysia",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "Official Moodle guide",
+        "url": "https://www.nottingham.edu.my/IT-Services/old/teaching/learning-resources/moodle.aspx",
+        "kind": "guidance_not_direct_login"
+      },
+      "official_website": "https://www.nottingham.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "ucsi",
+      "abbreviation": "UCSI",
+      "name": "UCSI University",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "Student Portal Links",
+        "url": "https://www.ucsiuniversity.edu.my/current-students",
+        "kind": "student_directory"
+      },
+      "official_website": "https://www.ucsiuniversity.edu.my/",
+      "requires_university_login": true
+    },
+    {
+      "id": "sunway",
+      "abbreviation": "Sunway",
+      "name": "Sunway University",
+      "institution_type": "private_or_international",
+      "learning_access": {
+        "label": "Sunway Student Portal / Orientation",
+        "url": "https://student.sunway.edu.my/orientation/student-account-activation",
+        "kind": "student_guidance"
+      },
+      "official_website": "https://sunwayuniversity.edu.my/",
+      "requires_university_login": true
+    }
+  ]
+}
