@@ -1,12 +1,22 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowDown, Sun, Moon, Menu, Check } from "lucide-react";
-import { DemoProvider } from "@/components/demo/DemoState";
-import { CyraDesktop } from "@/components/demo/CyraDesktop";
-import { Mascot } from "@/components/demo/Mascot";
+import {
+  ArrowUpRight,
+  ArrowDown,
+  Sun,
+  Moon,
+  Menu,
+  Check,
+  Plus,
+  FileText,
+  ImageIcon,
+  Link,
+} from "lucide-react";
+import { PromoFilm } from "@/components/PromoFilm";
+import { Mascot } from "@/components/Mascot";
 import { InstallerShowcase } from "@/components/InstallerShowcase";
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
 import { release as fallbackRelease, type Release } from "@/data/release";
 const ReleaseContext = createContext(fallbackRelease);
 const features = [
@@ -48,7 +58,7 @@ function Content() {
         Skip to content
       </a>
       <header className="header">
-        <a className="brand" href="#" aria-label="Cyra home">
+        <a className="brand" href="#">
           <Image
             src="/assets/branding/cyra.png"
             alt=""
@@ -56,7 +66,7 @@ function Content() {
             height={30}
             sizes="28px"
           />
-          cyra<span>FOR WINDOWS</span>
+          cyra <span>FOR WINDOWS</span>
         </a>
         <nav
           className={menu ? "open" : ""}
@@ -66,7 +76,7 @@ function Content() {
           }}
         >
           <a href="#features">Features</a>
-          <a href="#demo">Try Cyra</a>
+          <a href="#film">Watch Cyra</a>
           <a
             href={release.websiteRepository}
             target="_blank"
@@ -118,18 +128,12 @@ function Content() {
                 the moments that matter to the edge of your Windows desktop.
               </p>
               <DownloadLink />
-              <a className="text-link" href="#demo">
-                Try it right here <ArrowDown size={15} />
+              <a className="text-link" href="#film">
+                See Cyra in motion <ArrowDown size={15} />
               </a>
             </div>
           </div>
-          <div className="hero-demo" id="demo">
-            <div className="section-kicker">
-              <span>01 / MEET YOUR NEW LITTLE SPACE</span>
-              <span>TRY CYRA ↘</span>
-            </div>
-            <CyraDesktop />
-          </div>
+          <PromoFilm />
           <div className="trust-line">
             <span>
               <Check size={14} />
@@ -184,25 +188,38 @@ function Content() {
                 CPU, memory, disk and network activity — without losing your
                 place.
               </p>
-              <div className="stat-art" aria-hidden="true">
-                <div>
-                  <b>
-                    28<small>%</small>
-                  </b>
-                  <span>CPU</span>
-                </div>
-                <div>
-                  <b>
-                    48<small>%</small>
-                  </b>
-                  <span>RAM</span>
-                </div>
-                <div>
-                  <b>
-                    36<small>%</small>
-                  </b>
-                  <span>DISK</span>
-                </div>
+              <div className="system-illustration" aria-hidden="true">
+                {[
+                  ["CPU", 28],
+                  ["RAM", 48],
+                  ["DISK", 36],
+                ].map(([label, value]) => (
+                  <div className="system-gauge" key={label}>
+                    <div>
+                      <svg viewBox="0 0 100 100">
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="44"
+                          className="gauge-track"
+                        />
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="44"
+                          className="gauge-value"
+                          pathLength="100"
+                          strokeDasharray={`${value} 100`}
+                        />
+                      </svg>
+                      <b>
+                        {value}
+                        <small>%</small>
+                      </b>
+                    </div>
+                    <span>{label}</span>
+                  </div>
+                ))}
               </div>
               <small>Illustrative values</small>
             </article>
@@ -210,14 +227,34 @@ function Content() {
               <span className="eyebrow">CLIPBOARD</span>
               <h3>Keep it close.</h3>
               <p>Copy once. Pick it up when you need it.</p>
-              <div className="clipboard-composition" aria-hidden="true">
-                <span className="clip-sheet back" />
-                <span className="clip-sheet front">
-                  <i />
-                  <i />
-                  <i />
-                  <Check size={18} />
-                </span>
+              <div
+                className="clipboard-preview"
+                aria-label="Illustrative clipboard entries"
+              >
+                <div>
+                  <span className="clip-thumbnail">
+                    <FileText size={18} aria-hidden="true" />
+                  </span>
+                  <span>
+                    Ideas for tomorrow<small>Text · Just copied</small>
+                  </span>
+                </div>
+                <div>
+                  <span className="clip-thumbnail image">
+                    <ImageIcon size={18} aria-hidden="true" />
+                  </span>
+                  <span>
+                    A moment worth keeping<small>Image · Earlier</small>
+                  </span>
+                </div>
+                <div>
+                  <span className="clip-thumbnail">
+                    <Link size={18} aria-hidden="true" />
+                  </span>
+                  <span>
+                    Back to that good read<small>Link · Earlier</small>
+                  </span>
+                </div>
               </div>
             </article>
           </div>
@@ -299,66 +336,46 @@ function Content() {
           <div>
             {[
               [
-                "Can I move the notch?",
-                "Yes. Unlock the position in the demo Settings, then drag the small grip horizontally. Use Center to reset it.",
-              ],
-              [
-                "What is the difference between Notch and Floating Island?",
-                "Notch meets the top edge of the desktop. Floating Island sits slightly below it with a fully rounded outline. Both share the same features and state.",
-              ],
-              [
-                "Is Cyra free and lightweight?",
-                "Cyra builds on MIT-licensed Gili. The native application avoids a browser engine for its main interface. Resource use depends on active features; this page makes no unmeasured performance claims.",
-              ],
-              [
-                "How do I uninstall Cyra?",
-                "Use Windows Settings → Apps → Installed apps, select Cyra and choose Uninstall.",
-              ],
-              [
                 "What is Cyra?",
-                "Cyra is a Windows desktop companion developed from Gili. It brings media, focus, prayer times, system information, notifications, clipboard and Education into one compact space.",
-              ],
-              [
-                "Is this demo the real Windows app?",
-                "This is an interactive browser simulation. It uses sample data and never reads your notifications, hardware, media sessions or clipboard history.",
+                "Cyra is a Windows desktop companion developed from Gili. It brings music, focus, prayer times, system information, notifications, clipboard and Education into one compact space.",
               ],
               [
                 "Which Windows versions are supported?",
-                "The installer targets x64 Windows 10 build 17763 or newer, including Windows 11. Individual devices and Windows configurations still need real-world testing.",
+                "The installer targets x64 Windows 10 build 17763 or newer, including Windows 11, with .NET Framework 4.8. Compatibility depends on your device and Windows configuration.",
+              ],
+              [
+                "Notch or Floating Island?",
+                "Notch meets the top edge of your desktop. Floating Island sits slightly below it with a rounded outline. Choose either in the Windows application's Settings, along with theme, size and personalization.",
+              ],
+              [
+                "What can File Tools do?",
+                "Create and extract ZIPs, convert Word and PDF documents, and merge, split, compress or protect PDFs. Word-to-PDF requires Microsoft Word. PDF-to-Word needs separately configured optional dependencies.",
               ],
               [
                 "Do I need an account?",
-                "Cyra does not require a Cyra account. University portals and other external services may require their own sign-in.",
-              ],
-              [
-                "Does the demo upload or convert my files?",
-                "No. The demo only displays a selected file name and simulates processing. Real file operations happen in the Windows application.",
-              ],
-              [
-                "Can I personalize it?",
-                "Yes. Explore Dark and Light themes, Small/Medium/Large sizes, notch or floating mode, and your personal name in the demo.",
+                "No Cyra account is required. Windows permissions control access to system integrations; university portals and other external services may require their own sign-in.",
               ],
               [
                 "Does Cyra work offline?",
                 "Local functions can work offline. Live prayer data, university websites and other network-dependent services require an internet connection.",
               ],
               [
-                "Where can I download Cyra?",
-                "Download the latest verified stable installer from Official Releases. The button updates automatically; if release metadata is unavailable, use the releases-page link.",
+                "How do I install or uninstall Cyra?",
+                "Download the official installer and follow the Windows setup wizard. To uninstall, open Windows Settings, choose Apps, then select Cyra. Your saved Cyra settings are preserved.",
               ],
               [
-                "Who makes Cyra?",
-                "Cyra is developed by Paim, building on Gili. Original MIT license and author notices are preserved.",
+                "Where do I get updates?",
+                "Use the download button or Official Releases. This page checks for the latest stable installer automatically and links its release notes and checksum when available.",
               ],
               [
-                "Does the page respect reduced motion?",
-                "Yes. Reduced-motion preferences disable decorative animation. Demo timers pause when their panel is not visible.",
+                "Who makes Cyra, and what about licensing?",
+                "Cyra is developed by Paim, building on MIT-licensed Gili by Maulana. Original copyright and permission notices are preserved with the installer. The public GitHub website repository contains website code, not the Windows application's source.",
               ],
             ].map(([q, a]) => (
               <details key={q}>
                 <summary>
                   {q}
-                  <span>+</span>
+                  <Plus size={18} aria-hidden="true" />
                 </summary>
                 <p>{a}</p>
               </details>
@@ -400,9 +417,9 @@ export function Landing({
 }) {
   return (
     <ReleaseContext.Provider value={latestRelease}>
-      <DemoProvider>
+      <MotionConfig reducedMotion="user">
         <Content />
-      </DemoProvider>
+      </MotionConfig>
     </ReleaseContext.Provider>
   );
 }

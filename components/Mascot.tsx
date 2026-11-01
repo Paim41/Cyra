@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, useRef, type CSSProperties } from "react";
 import { useInView, useReducedMotion } from "motion/react";
-import { useDemo } from "./DemoState";
 import manifest from "@/data/mascot.json";
 export function Mascot({
   theme = "dark",
@@ -12,8 +11,7 @@ export function Mascot({
   active?: boolean;
   large?: boolean;
 }) {
-  const d = useDemo(),
-    ref = useRef<HTMLButtonElement>(null),
+  const ref = useRef<HTMLButtonElement>(null),
     eye = useRef<HTMLImageElement>(null),
     inView = useInView(ref),
     reduced = useReducedMotion();
@@ -50,7 +48,7 @@ export function Mascot({
     );
     return () => clearTimeout(timer);
   }, [reaction]);
-  const state = d.mascotMood === "idle" ? reaction : d.mascotMood,
+  const state = reaction,
     sprite = manifest.sprites[state];
   const tracking = state === "hover" && !reduced;
   return (

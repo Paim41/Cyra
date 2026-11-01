@@ -4,6 +4,7 @@ import Script from "next/script";
 import { siteUrl } from "@/data/release";
 import "./globals.css";
 import "./cyra-parity.css";
+import "./promo.css";
 const lato = localFont({
   src: [
     { path: "../public/assets/fonts/Lato-Regular-latin.woff2", weight: "400" },
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   },
   title: "Cyra — A little space. A better flow.",
   description:
-    "Meet Cyra, a considered companion for your Windows desktop. Explore the interactive demo.",
+    "Meet Cyra, a considered companion for your Windows desktop. Watch Cyra in motion and download the Windows application.",
   openGraph: {
     title: "Cyra — A little space. A better flow.",
     description: "Your everyday essentials. One quiet little space.",
