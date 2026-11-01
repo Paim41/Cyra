@@ -23,7 +23,7 @@ npm run build
 npm run start
 ```
 
-Stack: Next.js App Router, React, TypeScript, CSS, Motion, Lucide, locally bundled Lato fonts. Playwright checks the responsive film player and accessible interactions. The supplied 12-second silent promotional animation plays locally in a native video element. Reduced-motion users see the poster until pressing Play; playback pauses offscreen or in a hidden tab and respects manual pause. It does not loop.
+Stack: Next.js App Router, React, TypeScript, CSS, Motion, Lucide, locally bundled Lato fonts. Playwright checks the responsive film player and accessible interactions. The supplied 12-second silent promotional animation plays locally in a native video element. Reduced-motion users see the poster; playback pauses offscreen or in a hidden tab. The cinematic film has no playback controls and does not loop. The page includes active section navigation, theme-aware scrollbars, release resource cards, and a stable desktop FAQ with native answer dialogs on mobile.
 
 ## Repository structure
 

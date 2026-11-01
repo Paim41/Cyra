@@ -376,27 +376,6 @@ h2 {
 .faq .eyebrow {
   margin-bottom: 22px;
 }
-.faq details {
-  border-bottom: 1px solid var(--line);
-}
-.faq summary {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  cursor: pointer;
-  list-style: none;
-  padding: 22px 0;
-  font-size: 15px;
-}
-.faq summary::-webkit-details-marker {
-  display: none;
-}
-.faq details p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-  padding: 0 20px 25px 0;
-}
 .footer {
   display: flex;
   align-items: center;
@@ -616,11 +595,6 @@ h2 {
   }
   .faq > div:first-child {
     margin-bottom: 35px;
-  }
-  .faq summary {
-    font-size: 14px;
-    line-height: 1.6;
-    padding: 20px 0;
   }
   .footer {
     padding-block: 30px;

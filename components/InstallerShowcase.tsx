@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 const steps = [
   ["01-welcome.png", "Welcome to Cyra Setup"],
@@ -36,6 +37,7 @@ export function InstallerShowcase() {
   return (
     <section
       className="installer wrap section"
+      id="installation"
       aria-label="Cyra installer walkthrough"
       onKeyDown={keys}
     >
@@ -83,7 +85,7 @@ export function InstallerShowcase() {
               disabled={step === 0}
               onClick={() => setStep(step - 1)}
             >
-              Previous
+              <ChevronLeft size={16} aria-hidden="true" /> Previous
             </button>
             <span aria-live="polite">{step + 1} / 7</span>
             <button
@@ -91,7 +93,7 @@ export function InstallerShowcase() {
               disabled={step === 6}
               onClick={() => setStep(step + 1)}
             >
-              Next
+              Next <ChevronRight size={16} aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -115,11 +117,11 @@ export function InstallerShowcase() {
           autoFocus
           onClick={() => dialog.current?.close()}
         >
-          Close enlarged screenshot
+          <X size={16} aria-hidden="true" /> Close enlarged screenshot
         </button>
         {picture}
         <p>
-          {step + 1} / 7 · {steps[step][1]}
+          {step + 1} / 7 Â· {steps[step][1]}
         </p>
       </dialog>
     </section>

@@ -4,15 +4,15 @@ import Image from "next/image";
 import {
   ArrowUpRight,
   ArrowDown,
-  Sun,
-  Moon,
-  Menu,
   Check,
-  Plus,
   FileText,
   ImageIcon,
   Link,
 } from "lucide-react";
+import { FAQ } from "@/components/FAQ";
+import { SectionReveals } from "@/components/SectionReveals";
+import { SiteHeader, SocialLink } from "@/components/SiteHeader";
+import { ReleaseCards } from "@/components/ReleaseCards";
 import { PromoFilm } from "@/components/PromoFilm";
 import { Mascot } from "@/components/Mascot";
 import { InstallerShowcase } from "@/components/InstallerShowcase";
@@ -50,61 +50,18 @@ function DownloadLink() {
 }
 function Content() {
   const release = useContext(ReleaseContext);
-  const [light, setLight] = useState(false),
-    [menu, setMenu] = useState(false);
+  const [light, setLight] = useState(false);
   return (
     <div className={`site ${light ? "site-light" : ""}`}>
+      <SectionReveals />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="header">
-        <a className="brand" href="#">
-          <Image
-            src="/assets/branding/cyra.png"
-            alt=""
-            width={28}
-            height={30}
-            sizes="28px"
-          />
-          cyra <span>FOR WINDOWS</span>
-        </a>
-        <nav
-          className={menu ? "open" : ""}
-          aria-label="Main navigation"
-          onClick={(e) => {
-            if ((e.target as HTMLElement).closest("a")) setMenu(false);
-          }}
-        >
-          <a href="#features">Features</a>
-          <a href="#film">Watch Cyra</a>
-          <a
-            href={release.websiteRepository}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Website on GitHub <ArrowUpRight size={13} />
-          </a>
-        </nav>
-        <div className="header-actions">
-          <button
-            aria-label="Toggle website appearance"
-            onClick={() => setLight(!light)}
-          >
-            {light ? <Moon size={18} /> : <Sun size={18} />}
-          </button>
-          <a className="button small" href="#download">
-            Get Cyra <ArrowUpRight size={15} />
-          </a>
-          <button
-            className="mobile-menu"
-            aria-label="Toggle navigation"
-            aria-expanded={menu}
-            onClick={() => setMenu(!menu)}
-          >
-            <Menu />
-          </button>
-        </div>
-      </header>
+      <SiteHeader
+        light={light}
+        onTheme={() => setLight(!light)}
+        repository={release.websiteRepository}
+      />
       <main id="main">
         <section className="hero wrap">
           <div className="eyebrow">
@@ -172,7 +129,7 @@ function Content() {
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, delay: i * 0.06 }}
               >
                 <span>0{i + 1}</span>
                 <h3>{title}</h3>
@@ -273,22 +230,10 @@ function Content() {
             {release.available && release.installerUrl ? (
               <div className="release-actions">
                 <DownloadLink />
-                <a className="text-link" href={release.releases}>
-                  View All Releases
-                </a>
-                {release.checksumUrl && (
-                  <a className="text-link" href={release.checksumUrl}>
-                    SHA-256 checksum
-                  </a>
-                )}
+                <ReleaseCards release={release} />
                 {release.portableUrl && (
                   <a className="button" href={release.portableUrl}>
                     Portable ZIP <ArrowUpRight size={16} />
-                  </a>
-                )}
-                {release.notesUrl && (
-                  <a className="text-link" href={release.notesUrl}>
-                    Release notes <ArrowUpRight size={14} />
                   </a>
                 )}
               </div>
@@ -324,64 +269,7 @@ function Content() {
             </small>
           </div>
         </section>
-        <section className="faq wrap section">
-          <div>
-            <p className="eyebrow">A FEW GOOD QUESTIONS</p>
-            <h2>
-              Little details.
-              <br />
-              Clear answers.
-            </h2>
-          </div>
-          <div>
-            {[
-              [
-                "What is Cyra?",
-                "Cyra is a Windows desktop companion developed from Gili. It brings music, focus, prayer times, system information, notifications, clipboard and Education into one compact space.",
-              ],
-              [
-                "Which Windows versions are supported?",
-                "The installer targets x64 Windows 10 build 17763 or newer, including Windows 11, with .NET Framework 4.8. Compatibility depends on your device and Windows configuration.",
-              ],
-              [
-                "Notch or Floating Island?",
-                "Notch meets the top edge of your desktop. Floating Island sits slightly below it with a rounded outline. Choose either in the Windows application's Settings, along with theme, size and personalization.",
-              ],
-              [
-                "What can File Tools do?",
-                "Create and extract ZIPs, convert Word and PDF documents, and merge, split, compress or protect PDFs. Word-to-PDF requires Microsoft Word. PDF-to-Word needs separately configured optional dependencies.",
-              ],
-              [
-                "Do I need an account?",
-                "No Cyra account is required. Windows permissions control access to system integrations; university portals and other external services may require their own sign-in.",
-              ],
-              [
-                "Does Cyra work offline?",
-                "Local functions can work offline. Live prayer data, university websites and other network-dependent services require an internet connection.",
-              ],
-              [
-                "How do I install or uninstall Cyra?",
-                "Download the official installer and follow the Windows setup wizard. To uninstall, open Windows Settings, choose Apps, then select Cyra. Your saved Cyra settings are preserved.",
-              ],
-              [
-                "Where do I get updates?",
-                "Use the download button or Official Releases. This page checks for the latest stable installer automatically and links its release notes and checksum when available.",
-              ],
-              [
-                "Who makes Cyra, and what about licensing?",
-                "Cyra is developed by Paim, building on MIT-licensed Gili by Maulana. Original copyright and permission notices are preserved with the installer. The public GitHub website repository contains website code, not the Windows application's source.",
-              ],
-            ].map(([q, a]) => (
-              <details key={q}>
-                <summary>
-                  {q}
-                  <Plus size={18} aria-hidden="true" />
-                </summary>
-                <p>{a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
+        <FAQ />
       </main>
       <footer className="footer wrap">
         <a className="brand" href="#">
@@ -400,9 +288,12 @@ function Content() {
           <small>Designed by Paim.</small>
         </p>
         <div>
-          <a href={release.websiteRepository}>Website on GitHub</a>
+          <SocialLink kind="github" href={release.websiteRepository} />
           <a href={release.repository}>Official Installer Repository</a>
-          <a href="https://www.linkedin.com/in/paim41/">LinkedIn</a>
+          <SocialLink
+            kind="linkedin"
+            href="https://www.linkedin.com/in/paim41/"
+          />
           <a href="/assets/UPSTREAM-LICENSE.txt">Gili · MIT notices</a>
         </div>
         <small>© {new Date().getFullYear()} Paim. Cyra.</small>

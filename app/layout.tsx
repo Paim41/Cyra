@@ -5,6 +5,7 @@ import { siteUrl } from "@/data/release";
 import "./globals.css";
 import "./cyra-parity.css";
 import "./promo.css";
+import "./polish.css";
 const lato = localFont({
   src: [
     { path: "../public/assets/fonts/Lato-Regular-latin.woff2", weight: "400" },
@@ -19,13 +20,13 @@ export const metadata: Metadata = {
     : {}),
   twitter: {
     card: "summary_large_image",
-    title: "Cyra — Your desktop, reimagined.",
+    title: "Cyra â€” Your desktop, reimagined.",
   },
-  title: "Cyra — A little space. A better flow.",
+  title: "Cyra â€” A little space. A better flow.",
   description:
     "Meet Cyra, a considered companion for your Windows desktop. Watch Cyra in motion and download the Windows application.",
   openGraph: {
-    title: "Cyra — A little space. A better flow.",
+    title: "Cyra â€” A little space. A better flow.",
     description: "Your everyday essentials. One quiet little space.",
     type: "website",
   },
