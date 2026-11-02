@@ -143,7 +143,7 @@ export function SiteHeader({
             width={28}
             height={30}
           />
-          cyra <span>FOR WINDOWS</span>
+          Cyra <span>FOR WINDOWS</span>
         </a>
         <nav className="desktop-navigation" aria-label="Main navigation">
           {sections.map(({ id, label }) => (

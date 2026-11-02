@@ -256,7 +256,7 @@ function Content() {
             height={30}
             sizes="28px"
           />
-          cyra
+          Cyra
         </a>
         <p>
           A companion for Windows.
