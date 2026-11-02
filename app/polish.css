@@ -111,10 +111,6 @@
 #faq {
   scroll-margin-top: 90px;
 }
-#header-sentinel {
-  height: 1px;
-  margin-bottom: -1px;
-}
 .header {
   gap: 24px;
   transition:
@@ -135,23 +131,8 @@
   white-space: nowrap;
   transition: color var(--motion-fast);
 }
-.header nav a::after {
-  content: "";
-  position: absolute;
-  bottom: 4px;
-  left: 25%;
-  right: 25%;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--red);
-  transform: scaleX(0);
-  transition: transform 220ms var(--motion-ease);
-}
 .header nav a[aria-current] {
   color: var(--red);
-}
-.header nav a[aria-current]::after {
-  transform: scaleX(1);
 }
 .header-actions {
   gap: 6px;
@@ -230,9 +211,6 @@
 .release-card > svg {
   transition: transform var(--motion-fast);
 }
-.button:hover svg:last-child {
-  transform: translateX(2px);
-}
 .feature-cards article:hover {
   transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--red) 40%, var(--line));
@@ -307,10 +285,6 @@
   color: var(--red);
   flex-shrink: 0;
 }
-.release-card > svg:last-child {
-  margin-left: auto;
-  color: var(--muted);
-}
 .release-card strong {
   display: block;
   font-size: 13px;
@@ -327,9 +301,6 @@
   transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--red) 45%, var(--line));
   background: rgb(var(--glass) / 0.07);
-}
-.release-card[href]:hover > svg:first-child {
-  transform: translateY(-2px);
 }
 .release-card.unavailable {
   opacity: 0.65;
@@ -590,4 +561,274 @@ html {
     opacity: 1;
     transform: none;
   }
+}
+/* Shared liquid glass surfaces; opaque by default for unsupported engines. */
+.site {
+  --glass-solid: #1b1d24;
+  --glass-tint: rgba(23, 25, 32, 0.86);
+  --glass-border: rgba(220, 125, 145, 0.19);
+  --glass-reflection: rgba(255, 255, 255, 0.09);
+  --glass-depth: 0 8px 24px #00000014;
+  --menu-overlay: rgba(3, 5, 10, 0.56);
+}
+.site-light {
+  --glass-solid: #edf3fa;
+  --glass-tint: rgba(241, 247, 253, 0.89);
+  --glass-border: rgba(74, 112, 164, 0.23);
+  --glass-reflection: rgba(255, 255, 255, 0.85);
+  --glass-depth: 0 8px 24px #2038540b;
+  --menu-overlay: rgba(32, 48, 68, 0.25);
+}
+.header.is-scrolled,
+.mobile-nav-panel,
+.release-card,
+.faq-answer,
+.faq-dialog {
+  background: var(--glass-solid);
+  border-color: var(--glass-border);
+  box-shadow:
+    inset 0 1px var(--glass-reflection),
+    var(--glass-depth);
+}
+@supports (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .header.is-scrolled,
+  .mobile-nav-panel,
+  .release-card,
+  .faq-answer,
+  .faq-dialog {
+    background:
+      linear-gradient(160deg, var(--glass-reflection), transparent 35%),
+      var(--glass-tint);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+.film-stage {
+  border-color: var(--glass-border);
+  box-shadow:
+    inset 0 1px var(--glass-reflection),
+    var(--glass-depth);
+}
+.film-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 1px var(--glass-reflection);
+}
+html {
+  scroll-padding-top: 100px;
+}
+#film,
+#features,
+#installation,
+#download,
+#faq {
+  scroll-margin-top: 0;
+}
+.header .desktop-navigation {
+  position: relative;
+  gap: 18px;
+}
+.liquid-underline {
+  position: absolute;
+  bottom: 4px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--red);
+  box-shadow: 0 -1px 4px color-mix(in srgb, var(--red) 15%, transparent);
+}
+.header .desktop-navigation a::after {
+  content: none;
+}
+.header-actions {
+  margin-left: 0;
+}
+.mobile-nav-panel {
+  position: fixed;
+  inset: 78px 14px auto auto;
+  margin: 0;
+  width: min(360px, calc(100vw - 28px));
+  max-height: calc(100dvh - 96px);
+  padding: 14px;
+  overflow: auto;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  color: var(--text);
+}
+.mobile-nav-panel[open] {
+  animation: menu-enter 180ms var(--motion-ease) both;
+}
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.mobile-nav-panel::backdrop {
+  background: var(--menu-overlay);
+}
+.mobile-nav-panel nav {
+  display: grid;
+  position: static;
+  margin: 10px 0 16px;
+  padding: 0;
+  gap: 4px;
+  background: none;
+  border: 0;
+}
+.mobile-nav-panel nav a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 13px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  min-height: 48px;
+}
+.mobile-nav-panel nav a::after {
+  content: none;
+}
+.mobile-nav-panel nav a[aria-current] {
+  background: color-mix(in srgb, var(--red) 9%, transparent);
+}
+.mobile-nav-panel nav a:hover {
+  background: color-mix(in srgb, var(--red) 7%, transparent);
+}
+.nav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  margin-left: auto;
+}
+[aria-current] > .nav-dot {
+  background: var(--red);
+}
+.mobile-nav-panel > .primary {
+  width: 100%;
+  font-size: 13px;
+  gap: 10px;
+}
+body:has(.mobile-nav-panel[open]) {
+  overflow: hidden;
+}
+.header .mobile-menu {
+  width: 44px;
+  height: 44px;
+}
+.release-actions {
+  max-width: 720px;
+}
+.release-card {
+  min-height: 80px;
+  padding: 16px;
+  gap: 12px;
+}
+.release-card[href]:hover {
+  background: var(--glass-solid);
+  box-shadow:
+    inset 0 1px var(--glass-reflection),
+    var(--glass-depth);
+  transform: translateY(-2px);
+}
+.release-card > svg {
+  margin: 0;
+  color: var(--red);
+}
+.faq-explorer {
+  grid-template-columns: 1fr 1.1fr;
+  gap: 38px;
+}
+.faq-questions button {
+  padding: 15px 14px;
+  min-height: 56px;
+}
+.faq-answer {
+  height: 376px;
+  padding: 32px;
+}
+.faq-answer h3 {
+  margin-top: 20px;
+}
+.faq-questions button.selected {
+  border-radius: 8px 8px 0 0;
+}
+.download h2 {
+  font-size: clamp(48px, 5.7vw, 80px);
+  letter-spacing: -3px;
+}
+@media (max-width: 1000px) {
+  .header .desktop-navigation {
+    gap: 10px;
+    font-size: 12px;
+  }
+  .header {
+    gap: 16px;
+  }
+  .header .brand span {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  html {
+    scroll-padding-top: 84px;
+  }
+  .header .desktop-navigation {
+    display: none;
+  }
+  .header-actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+  .header-actions > button {
+    width: 44px;
+  }
+  .header .header-download {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .header {
+    padding-inline: 16px;
+  }
+  .faq-explorer {
+    display: block;
+  }
+  .release-card {
+    min-height: 72px;
+    padding: 14px 18px;
+  }
+  .release-cards {
+    gap: 8px;
+  }
+  .faq-dialog {
+    padding: 24px;
+  }
+  .download h2 {
+    letter-spacing: -2px;
+  }
+  .section-kicker > span:last-child {
+    max-width: none;
+    text-align: left;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-panel[open] {
+    animation: none;
+  }
+  .release-card[href]:hover {
+    transform: none;
+  }
+}
+.mobile-nav-panel {
+  --glass-tint: color-mix(in srgb, var(--glass-solid) 96%, transparent);
 }

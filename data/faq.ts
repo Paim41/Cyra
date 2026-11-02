@@ -16,20 +16,12 @@ export const questions = [
     "Create and extract ZIPs, convert Word and PDF documents, and merge, split, compress or protect PDFs. Word-to-PDF requires Microsoft Word. PDF-to-Word needs separately configured optional dependencies.",
   ],
   [
-    "Do I need an account?",
-    "No Cyra account is required. Windows permissions control access to system integrations; university portals and other external services may require their own sign-in.",
+    "Do I need an account or internet access?",
+    "No Cyra account is required. Local functions can work offline. Live prayer data, university websites and other network-dependent services need internet access. Windows permissions control system integrations, and external portals may require their own sign-in.",
   ],
   [
-    "Does Cyra work offline?",
-    "Local functions can work offline. Live prayer data, university websites and other network-dependent services require an internet connection.",
-  ],
-  [
-    "How do I install or uninstall Cyra?",
-    "Download the official installer and follow the Windows setup wizard. To uninstall, open Windows Settings, choose Apps, then select Cyra. Your saved Cyra settings are preserved.",
-  ],
-  [
-    "Where do I get updates?",
-    "Use the download button or Official Releases. This page checks for the latest stable installer automatically and links its release notes and checksum when available.",
+    "How do I install, update or uninstall Cyra?",
+    "Download the official installer and follow the setup wizard. This page checks for the latest stable installer and links its release notes and checksum when available; Official Releases lists all versions. To uninstall, open Windows Settings, choose Apps, then Cyra. Saved Cyra settings are preserved.",
   ],
   [
     "Who makes Cyra, and what about licensing?",

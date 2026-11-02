@@ -47,6 +47,7 @@ for (const [width, height] of [
   [1366, 768],
   [768, 1024],
   [390, 844],
+  [360, 800],
 ])
   test(`responsive film and both themes ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height });
@@ -65,18 +66,18 @@ for (const [width, height] of [
       expect(box!.width / box!.height).toBeCloseTo(16 / 9, 1);
       await page.locator("#film").scrollIntoViewIfNeeded();
       await page.locator("#film").screenshot({
-        path: `docs/interface-polish/film-${width}-${theme}.png`,
+        path: `docs/liquid-glass/film-${width}-${theme}.png`,
         style: ".header { visibility: hidden !important; }",
       });
       await page.locator(".feature-cards").screenshot({
-        path: `docs/interface-polish/cards-${width}-${theme}.png`,
+        path: `docs/liquid-glass/cards-${width}-${theme}.png`,
         style: ".header { visibility: hidden !important; }",
       });
       await page.evaluate(() =>
         window.scrollTo({ top: 0, behavior: "instant" }),
       );
       await page.screenshot({
-        path: `docs/interface-polish/page-${width}-${theme}.png`,
+        path: `docs/liquid-glass/page-${width}-${theme}.png`,
         fullPage: true,
       });
       expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);

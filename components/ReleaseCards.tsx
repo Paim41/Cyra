@@ -1,4 +1,4 @@
-import { Package, ShieldCheck, ScrollText, ArrowUpRight } from "lucide-react";
+import { Package, ShieldCheck, ScrollText } from "lucide-react";
 import type { Release } from "@/data/release";
 export function ReleaseCards({ release }: { release: Release }) {
   return (
@@ -30,7 +30,6 @@ export function ReleaseCards({ release }: { release: Release }) {
               <strong>{title}</strong>
               <span>{description}</span>
             </span>
-            <ArrowUpRight size={14} aria-hidden="true" />
           </a>
         ) : (
           <div className="release-card unavailable" key={title}>

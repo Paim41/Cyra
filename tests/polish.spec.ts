@@ -25,7 +25,7 @@ test("navigation follows scroll, hashes and clicks; social links and root theme"
   await nav.getByRole("link", { name: "Watch Cyra" }).click();
   await expect(page).toHaveURL(/#film$/);
   const social = page
-    .locator("header")
+    .locator("footer")
     .getByRole("link", { name: "Website on GitHub" });
   await social.focus();
   await expect(social.locator(".social-tooltip")).toBeVisible();
@@ -46,12 +46,12 @@ test("FAQ reserves page height for every answer and supports keyboard selection"
 }) => {
   await page.goto("/");
   const questions = page.locator(".faq-questions button");
-  await expect(questions).toHaveCount(9);
+  await expect(questions).toHaveCount(7);
   await questions.first().scrollIntoViewIfNeeded();
   const height = await page.evaluate(
     () => document.documentElement.scrollHeight,
   );
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 7; i++) {
     await questions.nth(i).focus();
     await page.keyboard.press("Enter");
     await expect(questions.nth(i)).toHaveAttribute("aria-pressed", "true");

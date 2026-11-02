@@ -14,12 +14,8 @@ export function FAQ() {
   return (
     <section className="faq wrap section" id="faq">
       <div className="faq-heading">
-        <p className="eyebrow">A FEW GOOD QUESTIONS</p>
-        <h2>
-          Little details.
-          <br />
-          Clear answers.
-        </h2>
+        <p className="eyebrow">ANSWERS, WITHOUT THE GUESSWORK</p>
+        <h2>Good to know.</h2>
       </div>
       <div className="faq-explorer">
         <div className="faq-questions" aria-label="Frequently asked questions">
@@ -44,7 +40,7 @@ export function FAQ() {
           tabIndex={0}
         >
           <div key={selected} className="answer-copy" aria-live="polite">
-            <span className="eyebrow">A LITTLE CLARITY</span>
+            <span className="eyebrow">THE DETAILS</span>
             <h3>{questions[selected][0]}</h3>
             <p>{questions[selected][1]}</p>
           </div>

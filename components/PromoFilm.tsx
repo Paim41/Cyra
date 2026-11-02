@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 export function PromoFilm() {
   const video = useRef<HTMLVideoElement>(null);
+  const previousTime = useRef(0);
   const [started, setStarted] = useState(false);
   const [failed, setFailed] = useState(false);
   useEffect(() => {
@@ -13,12 +14,7 @@ export function PromoFilm() {
       blocked = false;
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     const allowed = () =>
-      !disposed &&
-      visible &&
-      !document.hidden &&
-      !motion.matches &&
-      !blocked &&
-      !el.ended;
+      !disposed && visible && !document.hidden && !motion.matches && !blocked;
     const sync = () => {
       if (!allowed()) {
         el.pause();
@@ -31,7 +27,11 @@ export function PromoFilm() {
           if (!allowed()) el.pause();
           else setStarted(true);
         })
-        .catch(() => {
+        .catch((error: unknown) => {
+          // A visibility-driven pause may abort an outstanding play request.
+          // This is transient, not an autoplay permission failure.
+          if (error instanceof DOMException && error.name === "AbortError")
+            return;
           blocked = true;
           setStarted(false);
         });
@@ -58,7 +58,6 @@ export function PromoFilm() {
     <section className="hero-film" id="film" aria-label="Cyra in motion">
       <div className="section-kicker">
         <span>CYRA IN MOTION</span>
-        <span>12 SECONDS. A LITTLE MORE CYRA.</span>
       </div>
       <div className="film-stage">
         <video
@@ -66,12 +65,27 @@ export function PromoFilm() {
           width={1920}
           height={1080}
           muted
+          loop
           playsInline
           preload="none"
           poster="/assets/promo/cyra-promo-poster.jpg"
           src="/assets/promo/cyra-promo-web-teaser.mp4"
           aria-label="Cyra promotional film"
           aria-describedby="film-description"
+          onTimeUpdate={(event) => {
+            const el = event.currentTarget;
+            if (
+              previousTime.current > el.duration - 0.7 &&
+              el.currentTime < 0.7 &&
+              !matchMedia("(prefers-reduced-motion: reduce)").matches
+            ) {
+              el.animate([{ opacity: 0.65 }, { opacity: 1 }], {
+                duration: 220,
+                easing: "ease-out",
+              });
+            }
+            previousTime.current = el.currentTime;
+          }}
           onError={() => {
             setFailed(true);
             setStarted(false);

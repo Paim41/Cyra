@@ -1,12 +1,19 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Sun, Moon, Menu, X, ArrowUpRight } from "lucide-react";
-const links = [
-  ["features", "Features"],
-  ["film", "Watch Cyra"],
-  ["installation", "Installation"],
-] as const;
+import {
+  Sun,
+  Moon,
+  Menu,
+  X,
+  Download,
+  Play,
+  Layers,
+  Package,
+  CircleHelp,
+} from "lucide-react";
+import { sections } from "@/data/sections";
+import { motion } from "motion/react";
 export function SocialLink({
   kind,
   href,
@@ -45,17 +52,16 @@ export function SocialLink({
 export function SiteHeader({
   light,
   onTheme,
-  repository,
 }: {
   light: boolean;
   onTheme: () => void;
-  repository: string;
 }) {
   const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
   const header = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
+  const panel = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     document.documentElement.dataset.theme = light ? "light" : "dark";
     return () => {
@@ -63,70 +69,74 @@ export function SiteHeader({
     };
   }, [light]);
   useEffect(() => {
-    const nodes = links
-      .map(([id]) => document.getElementById(id))
+    const nodes = sections
+      .map(({ id }) => document.getElementById(id))
       .filter((n): n is HTMLElement => !!n);
+    let frame = 0;
     const update = () => {
-      const line = Math.max(
-        (header.current?.offsetHeight || 84) + 120,
-        innerHeight * 0.35,
+      frame = 0;
+      const line = (header.current?.offsetHeight || 84) + 32;
+      let next = "";
+      for (const n of nodes) {
+        if (n.getBoundingClientRect().top <= line) next = n.id;
+        else break;
+      }
+      if (
+        scrollY > 0 &&
+        scrollY + innerHeight >= document.documentElement.scrollHeight - 3
+      )
+        next = "faq";
+      setActive((previous) => (previous === next ? previous : next));
+      setScrolled((previous) =>
+        previous === scrollY > 4 ? previous : scrollY > 4,
       );
-      const match = nodes.find((n) => {
-        const r = n.getBoundingClientRect();
-        return r.top <= line && r.bottom > line;
-      });
-      setActive(match?.id || "");
     };
-    let observer: IntersectionObserver;
-    const observe = () => {
-      observer?.disconnect();
-      const top = Math.max(
-        (header.current?.offsetHeight || 84) + 120,
-        innerHeight * 0.35,
-      );
-      observer = new IntersectionObserver(update, {
-        rootMargin: `-${top}px 0px -${Math.max(0, innerHeight - top - 1)}px 0px`,
-      });
-      nodes.forEach((n) => observer.observe(n));
-      update();
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
     };
-    const resize = new ResizeObserver(observe);
-    if (header.current) resize.observe(header.current);
-    window.addEventListener("resize", observe);
     const hash = () => {
       const id = location.hash.slice(1);
-      if (links.some(([key]) => key === id)) setActive(id);
+      if (sections.some((s) => s.id === id)) setActive(id);
+      schedule();
     };
-    const sentinel = document.getElementById("header-sentinel");
-    const frost = new IntersectionObserver(([e]) =>
-      setScrolled(!e.isIntersecting),
-    );
-    if (sentinel) frost.observe(sentinel);
-    observe();
-    hash();
+    const resize = new ResizeObserver(schedule);
+    nodes.forEach((n) => resize.observe(n));
+    if (header.current) resize.observe(header.current);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
     window.addEventListener("hashchange", hash);
+    hash();
     return () => {
-      observer.disconnect();
-      frost.disconnect();
+      cancelAnimationFrame(frame);
       resize.disconnect();
-      window.removeEventListener("resize", observe);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
       window.removeEventListener("hashchange", hash);
     };
   }, []);
+  useEffect(() => {
+    const wide = matchMedia("(min-width: 701px)");
+    const close = () => {
+      if (wide.matches) panel.current?.close();
+    };
+    wide.addEventListener("change", close);
+    return () => wide.removeEventListener("change", close);
+  }, []);
+  const icons = [Play, Layers, Package, Download, CircleHelp];
+  function close() {
+    panel.current?.close();
+  }
+  function select(id: string) {
+    setActive(id);
+    close();
+  }
   return (
     <>
-      <div id="header-sentinel" aria-hidden="true" />
       <header
         ref={header}
         className={`header ${scrolled ? "is-scrolled" : ""}`}
-        onKeyDown={(e) => {
-          if (e.key === "Escape" && menu) {
-            setMenu(false);
-            toggle.current?.focus();
-          }
-        }}
       >
-        <a className="brand" href="#">
+        <a className="brand" href="#" aria-label="Cyra for Windows home">
           <Image
             src="/assets/branding/cyra.png"
             alt=""
@@ -135,49 +145,125 @@ export function SiteHeader({
           />
           cyra <span>FOR WINDOWS</span>
         </a>
-        <nav
-          id="primary-navigation"
-          aria-label="Main navigation"
-          className={menu ? "open" : ""}
-        >
-          {links.map(([id, label]) => (
+        <nav className="desktop-navigation" aria-label="Main navigation">
+          {sections.map(({ id, label }) => (
             <a
               key={id}
               href={`#${id}`}
               aria-current={active === id ? "location" : undefined}
-              onClick={() => {
-                setActive(id);
-                setMenu(false);
-              }}
+              onClick={() => setActive(id)}
             >
               {label}
+              {active === id && (
+                <motion.span
+                  className="liquid-underline"
+                  layoutId="section-underline"
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  aria-hidden="true"
+                />
+              )}
             </a>
           ))}
         </nav>
         <div className="header-actions">
-          <SocialLink kind="github" href={repository} />
-          <SocialLink
-            kind="linkedin"
-            href="https://www.linkedin.com/in/paim41/"
-          />
           <button aria-label="Toggle website appearance" onClick={onTheme}>
             {light ? <Moon size={18} /> : <Sun size={18} />}
           </button>
-          <a className="button small" href="#download">
-            Get Cyra <ArrowUpRight size={15} />
+          <a className="button small header-download" href="#download">
+            Get Cyra
           </a>
           <button
             ref={toggle}
             className="mobile-menu"
             aria-label="Toggle navigation"
-            aria-controls="primary-navigation"
+            aria-haspopup="dialog"
+            aria-controls="mobile-navigation"
             aria-expanded={menu}
-            onClick={() => setMenu(!menu)}
+            onClick={() => {
+              if (panel.current?.open) close();
+              else {
+                const pageTop = window.scrollY;
+                setMenu(true);
+                panel.current?.showModal();
+                window.scrollTo({ top: pageTop, behavior: "instant" });
+              }
+            }}
           >
             {menu ? <X /> : <Menu />}
           </button>
         </div>
       </header>
+      <dialog
+        ref={panel}
+        id="mobile-navigation"
+        className="mobile-nav-panel"
+        aria-label="Navigation"
+        onKeyDown={(event) => {
+          if (event.key !== "Tab") return;
+          const controls = event.currentTarget.querySelectorAll<HTMLElement>(
+            "a[href], button:not([disabled])",
+          );
+          const first = controls[0];
+          const last = controls[controls.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }}
+        onClose={() => {
+          setMenu(false);
+          toggle.current?.focus({ preventScroll: true });
+        }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            const r = e.currentTarget.getBoundingClientRect();
+            if (
+              e.clientX < r.left ||
+              e.clientX > r.right ||
+              e.clientY < r.top ||
+              e.clientY > r.bottom
+            )
+              close();
+          }
+        }}
+      >
+        <button
+          className="dialog-close"
+          aria-label="Close navigation"
+          onClick={close}
+          autoFocus
+        >
+          <X size={20} />
+        </button>
+        <nav aria-label="Mobile navigation">
+          {sections.map(({ id, label }, i) => {
+            const Icon = icons[i];
+            return (
+              <a
+                key={id}
+                href={`#${id}`}
+                aria-current={active === id ? "location" : undefined}
+                onClick={() => select(id)}
+              >
+                <Icon size={18} aria-hidden="true" />
+                {label}
+                <span className="nav-dot" aria-hidden="true" />
+              </a>
+            );
+          })}
+        </nav>
+        <a
+          className="button primary"
+          href="#download"
+          onClick={() => select("download")}
+        >
+          <Download size={17} aria-hidden="true" />
+          Get Cyra for Windows
+        </a>
+      </dialog>
     </>
   );
 }

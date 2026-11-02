@@ -1,14 +1,7 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 import Image from "next/image";
-import {
-  ArrowUpRight,
-  ArrowDown,
-  Check,
-  FileText,
-  ImageIcon,
-  Link,
-} from "lucide-react";
+import { Download, Check, FileText, ImageIcon, Link } from "lucide-react";
 import { FAQ } from "@/components/FAQ";
 import { SectionReveals } from "@/components/SectionReveals";
 import { SiteHeader, SocialLink } from "@/components/SiteHeader";
@@ -44,7 +37,7 @@ function DownloadLink() {
           : "#download"
       }
     >
-      Download Cyra for Windows <ArrowUpRight size={18} />
+      <Download size={18} aria-hidden="true" /> Download Cyra for Windows
     </a>
   );
 }
@@ -57,11 +50,7 @@ function Content() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <SiteHeader
-        light={light}
-        onTheme={() => setLight(!light)}
-        repository={release.websiteRepository}
-      />
+      <SiteHeader light={light} onTheme={() => setLight(!light)} />
       <main id="main">
         <section className="hero wrap">
           <div className="eyebrow">
@@ -75,18 +64,11 @@ function Content() {
               <em>reimagined.</em>
             </h1>
             <div className="hero-aside">
-              <p>
-                Your everyday essentials.
-                <br />
-                One quiet little space.
-              </p>
-              <p className="muted">
-                Meet Cyra — a personal companion that brings music, focus and
-                the moments that matter to the edge of your Windows desktop.
-              </p>
+              <p>Music, focus and everyday tools.</p>
+              <p className="muted">Right at the top of Windows.</p>
               <DownloadLink />
               <a className="text-link" href="#film">
-                See Cyra in motion <ArrowDown size={15} />
+                See Cyra in motion
               </a>
             </div>
           </div>
@@ -109,12 +91,8 @@ function Content() {
         <section className="features wrap section" id="features">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">LESS SWITCHING. MORE LIVING.</p>
-              <h2>
-                Small on your screen.
-                <br />
-                Big on the everyday.
-              </h2>
+              <p className="eyebrow">BUILT FOR YOUR ROUTINE</p>
+              <h2>Everything within reach.</h2>
             </div>
             <p>
               Not another dashboard to manage.
@@ -139,8 +117,8 @@ function Content() {
           </div>
           <div className="feature-cards">
             <article>
-              <span className="eyebrow">A LITTLE MORE AWARE</span>
-              <h3>Your system. At a glance.</h3>
+              <span className="eyebrow">SYSTEM MONITOR</span>
+              <h3>Know your system.</h3>
               <p>
                 CPU, memory, disk and network activity — without losing your
                 place.
@@ -182,7 +160,7 @@ function Content() {
             </article>
             <article className="clipboard-story">
               <span className="eyebrow">CLIPBOARD</span>
-              <h3>Keep it close.</h3>
+              <h3>Pick up where you left off.</h3>
               <p>Copy once. Pick it up when you need it.</p>
               <div
                 className="clipboard-preview"
@@ -220,11 +198,9 @@ function Content() {
         <section className="download section" id="download">
           <div className="wrap download-inner">
             <Mascot large theme={light ? "light" : "dark"} />
-            <p className="eyebrow">YOUR DESKTOP. A LITTLE MORE CONSIDERED.</p>
+            <p className="eyebrow">AVAILABLE FOR WINDOWS</p>
             <h2>
-              Make room
-              <br />
-              for a better <em>flow.</em>
+              Ready to meet <em>Cyra?</em>
             </h2>
             <p>Cyra for Windows 10 & 11 · x64</p>
             {release.available && release.installerUrl ? (
@@ -233,7 +209,7 @@ function Content() {
                 <ReleaseCards release={release} />
                 {release.portableUrl && (
                   <a className="button" href={release.portableUrl}>
-                    Portable ZIP <ArrowUpRight size={16} />
+                    Portable ZIP
                   </a>
                 )}
               </div>
@@ -248,7 +224,7 @@ function Content() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View All Releases <ArrowUpRight size={18} />
+                  View All Releases
                 </a>
               </>
             )}
@@ -283,7 +259,7 @@ function Content() {
           cyra
         </a>
         <p>
-          A little space. A better flow.
+          A companion for Windows.
           <br />
           <small>Designed by Paim.</small>
         </p>

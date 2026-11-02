@@ -44,11 +44,7 @@ export function InstallerShowcase() {
       <div className="section-heading">
         <div>
           <p className="eyebrow">A SIMPLE START</p>
-          <h2>
-            Simple to install.
-            <br />
-            Easy to use.
-          </h2>
+          <h2>Install in a few steps.</h2>
         </div>
         <p>
           A familiar Windows installer.
@@ -121,7 +117,7 @@ export function InstallerShowcase() {
         </button>
         {picture}
         <p>
-          {step + 1} / 7 Â· {steps[step][1]}
+          {step + 1} / 7 Ã‚Â· {steps[step][1]}
         </p>
       </dialog>
     </section>
